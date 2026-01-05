@@ -1,15 +1,14 @@
 package org.example.Dao;
 
-import jdk.jshell.spi.ExecutionControl;
 import org.example.Class.Formation;
-import org.example.ConnexionBDD;
+import org.example.Dao.Helper.DaoHelper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import org.example.Class.type_f;
 
-public class Formation_Dao implements InterfaceDao<Formation> {
+public class FormationDao extends DaoHelper implements InterfaceDao<Formation> {
     @Override
     public void save(Formation entity) {
         throw new UnsupportedOperationException("non implémenté");
@@ -17,12 +16,14 @@ public class Formation_Dao implements InterfaceDao<Formation> {
 
     @Override
     public Formation findById(Long id) {
-        throw new UnsupportedOperationException("non implémenté");
+        String sql = "SELECT * FROM formation WHERE id_formation=?";
+        return DaoHelper.executeQuerySingle(sql, this::mapRow,id);
     }
 
     @Override
     public List<Formation> findAll() {
-        throw new UnsupportedOperationException("non implémenté");
+        String sql = "SELECT * FROM formation";
+        return DaoHelper.executeQuery(sql, this::mapRow);
     }
 
     @Override
@@ -33,5 +34,16 @@ public class Formation_Dao implements InterfaceDao<Formation> {
     @Override
     public void delete(Long id) {
         throw new UnsupportedOperationException("non implémenté");
+    }
+
+    private Formation mapRow(ResultSet rs) throws SQLException {
+        return new Formation(
+                rs.getLong("id_formation"),
+                rs.getString("nom"),
+                rs.getString("description"),
+                rs.getInt("duree_jours"),
+                type_f.valueOf(rs.getString("type_formation")),
+                rs.getDouble("prix")
+        );
     }
 }
