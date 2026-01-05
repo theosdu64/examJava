@@ -1,0 +1,33 @@
+@startuml
+title Passer commande
+
+actor User
+participant Console
+participant CommandeService
+participant CommandeDAO
+database BDD
+
+User -> Console : Valider panier
+activate Console
+
+Console -> CommandeService : creerCommande(user, client, panier)
+activate CommandeService
+
+CommandeService -> CommandeDAO : save(commande)
+activate CommandeDAO
+
+CommandeDAO -> BDD : INSERT
+activate BDD
+BDD --> CommandeDAO : OK
+deactivate BDD
+
+CommandeDAO --> CommandeService : Commande
+deactivate CommandeDAO
+
+CommandeService --> Console : Commande créée
+deactivate CommandeService
+
+Console --> User : "Commande n°X créée"
+deactivate Console
+
+@enduml
