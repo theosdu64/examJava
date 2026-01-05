@@ -1,0 +1,43 @@
+UC1 - Afficher toutes les formations
+Permet à un visiteur ou un utilisateur d'afficher la liste complète des formations
+
+UC2 - Rechercher une formation par mot-clé
+Permet à un visiteur ou un utilisateur de rechercher des formations contenant un mot-clé
+
+UC3 - Filtrer les formations par type
+Permet à un visiteur ou un utilisateur de filtrer les formations selon leur type (présentiel ou distanciel)
+
+UC4 - Créer un compte utilisateur
+Permet à un visiteur de créer un compte en saisissant un email (identifiant unique) et un mot de passe
+
+Condition:
+
+- L'email doit être unique
+- Le mot de passe doit contenir au minimum 6 caractères
+
+UC5 - Se connecter
+Permet à un visiteur de s'authentifier en saisissant son email et son mot de passe. Le système vérifie si succès connecte l'utilisateur
+
+Pré-conditions :
+
+Avoir creeé un compte
+
+UC6 - Ajouter une formation au panier
+Permet à un visiteur ou un utilisateur d'ajouter une formation au panier en précisant la quantité.
+
+UC7 - Consulter le panier
+Permet à un visiteur ou un utilisateur d'afficher les formations selectionnez
+
+UC8 - Retirer une formation du panier
+Permet à un visiteur ou à un utilisateur de supprimer une formation du panier.
+
+UC10 - Passer commande
+Permet à un utilisateur connecté de valider son panier et créer une commande. L'utilisateur saisit les informations du client . Le système crée la commande calcule le montant total et vide le panier.
+
+Pré-conditions :
+
+L'utilisateur doit être connecté
+
+Règles de gestion :
+
+Si l'utilisateur n'est pas connecté, redirection vers la connexion/création de compte
