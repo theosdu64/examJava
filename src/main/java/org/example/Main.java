@@ -28,5 +28,7 @@ public class Main {
 //        Business.saveUtilisateur(mathieu);
 //        Business.searchByKeyWord("java");
 //            Business.getClient(1);
+        logger.info("----------------------------------------");
+        Business.findCommandeById(1);
     }
 }

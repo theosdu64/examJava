@@ -1,10 +1,12 @@
 package org.example.Business;
 
 import org.example.Class.Client;
+import org.example.Class.Commande;
 import org.example.Class.Formation;
 import org.example.Class.Utilisateur;
 import org.example.ConnexionBDD;
 import org.example.Dao.ClientDao;
+import org.example.Dao.CommandeDao;
 import org.example.Dao.FormationDao;
 import org.example.Dao.UtilisateurDao;
 
@@ -16,6 +18,7 @@ public class Business {
     static FormationDao formationDao = new FormationDao();
     static UtilisateurDao utilisateurDao = new UtilisateurDao();
     static ClientDao clientDao = new ClientDao();
+    static CommandeDao commandeDao = new CommandeDao();
     private static Utilisateur userConnecte = null;
 
     public static boolean estConnecte() {
@@ -116,6 +119,28 @@ public class Business {
             System.out.println(client);
         } catch (Exception e) {
             System.err.println("erreur getClient : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void findAllCommande() {
+        try {
+            List<Commande> commandes = commandeDao.findAll();
+            for (Commande c : commandes) {
+                System.out.println(c);
+            }
+        } catch (Exception e) {
+            System.err.println("erreur findallClient : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void findCommandeById(long id) {
+        try {
+            Commande commande = commandeDao.findById(id);
+            System.out.println(commande);
+        }  catch (Exception e) {
+            System.err.println("erreur findCommandeById : " + e.getMessage());
             e.printStackTrace();
         }
     }
