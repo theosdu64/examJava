@@ -80,5 +80,16 @@ public class Business {
             e.printStackTrace();
         }
     }
+
+    public static Utilisateur login(String email, String password) {
+        try {
+            Utilisateur user = utilisateurDao.login(email, password);
+            return user;
+        } catch (Exception e) {
+            System.err.println("Erreur lors du login");
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
