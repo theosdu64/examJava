@@ -2,15 +2,15 @@ package org.example.Class;
 
 public class Client {
 
-    private long id_client;
+    private long idClient;
     private String nom;
     private String prenom;
     private String email;
     private String adresse;
     private String telephone;
 
-    public Client(long id_client, String telephone, String adresse, String email, String prenom, String nom) {
-        this.id_client = id_client;
+    public Client(long idClient, String telephone, String adresse, String email, String prenom, String nom) {
+        this.idClient = idClient;
         this.telephone = telephone;
         this.adresse = adresse;
         this.email = email;
@@ -58,18 +58,18 @@ public class Client {
         this.nom = nom;
     }
 
-    public long getId_client() {
-        return id_client;
+    public long getidClient() {
+        return idClient;
     }
 
-    public void setId_client(long id_client) {
-        this.id_client = id_client;
+    public void setidClient(long idClient) {
+        this.idClient = idClient;
     }
 
     @Override
     public String toString() {
         return "Client{" +
-                "id_client=" + id_client +
+                "id_client=" + idClient +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +

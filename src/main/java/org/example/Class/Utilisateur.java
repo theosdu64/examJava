@@ -2,12 +2,12 @@ package org.example.Class;
 
 public class Utilisateur {
 
-    private  Long id_utilisateur;
+    private  Long idUtilisateur;
     private String email;
     private String password;
 
-    public Utilisateur(Long id_utilisateur, String email, String password) {
-        this.id_utilisateur = id_utilisateur;
+    public Utilisateur(Long idUtilisateur, String email, String password) {
+        this.idUtilisateur = idUtilisateur;
         this.email = email;
         this.password = password;
     }
@@ -17,12 +17,12 @@ public class Utilisateur {
         this.password = password;
     }
 
-    public Long getId_utilisateur() {
-        return id_utilisateur;
+    public Long getidUtilisateur() {
+        return idUtilisateur;
     }
 
-    public void setId_utilisateur(Long id_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
+    public void setidUtilisateur(Long idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
     public String getEmail() {
@@ -44,7 +44,7 @@ public class Utilisateur {
     @Override
     public String toString() {
         return "Utilisateur{" +
-                "id_utilisateur=" + id_utilisateur +
+                "id_utilisateur=" + idUtilisateur +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

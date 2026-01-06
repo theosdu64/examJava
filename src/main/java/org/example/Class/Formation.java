@@ -2,28 +2,28 @@ package org.example.Class;
 
 public class Formation {
 
-    private Long id_formation;
+    private Long idFormation;
     private String nom;
     private String description;
-    private Integer duree_jour;
-    private String type_formation;
+    private Integer dureeJour;
+    private String typeFormation;
     private double prix;
 
-    public Formation(Long id_formation, String nom, String description, Integer duree_jour, String type_formation, double prix) {
-        this.id_formation = id_formation;
+    public Formation(Long idFormation, String nom, String description, Integer dureeJour, String typeFormation, double prix) {
+        this.idFormation = idFormation;
         this.nom = nom;
         this.description = description;
-        this.duree_jour = duree_jour;
-        this.type_formation = type_formation;
+        this.dureeJour = dureeJour;
+        this.typeFormation = typeFormation;
         this.prix = prix;
     }
 
-    public Long getId_formation() {
-        return id_formation;
+    public Long getIdFormation() {
+        return idFormation;
     }
 
-    public void setId_formation(Long id_formation) {
-        this.id_formation = id_formation;
+    public void setIdFormation(Long idFormation) {
+        this.idFormation = idFormation;
     }
 
     public String getNom() {
@@ -42,20 +42,20 @@ public class Formation {
         this.description = description;
     }
 
-    public Integer getDuree_jour() {
-        return duree_jour;
+    public Integer getDureeJour() {
+        return dureeJour;
     }
 
-    public void setDuree_jour(Integer duree_jour) {
-        this.duree_jour = duree_jour;
+    public void setDureeJour(Integer dureeJour) {
+        this.dureeJour = dureeJour;
     }
 
-    public String getType_formation() {
-        return type_formation;
+    public String getTypeFormation() {
+        return typeFormation;
     }
 
-    public void setType_formation(String type_formation) {
-        this.type_formation = type_formation;
+    public void setTypeFormation(String typeFormation) {
+        this.typeFormation = typeFormation;
     }
 
     public double getPrix() {
@@ -69,11 +69,11 @@ public class Formation {
     @Override
     public String toString() {
         return "Formation{" +
-                "id_formation='" + id_formation + '\'' +
+                "idFormation=" + idFormation +
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
-                ", duree_jour=" + duree_jour +
-                ", type_formation=" + type_formation +
+                ", dureeJour=" + dureeJour +
+                ", typeFormation='" + typeFormation + '\'' +
                 ", prix=" + prix +
                 '}';
     }
