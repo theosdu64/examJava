@@ -1,6 +1,4 @@
 package org.example.Dao.Helper;
-
-import org.example.Class.Formation;
 import org.example.ConnexionBDD;
 
 import java.sql.*;
@@ -46,6 +44,28 @@ public abstract class DaoHelper {
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public static long executeInsert(String sql, Object... params) {
+        try (Connection conn = ConnexionBDD.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(i + 1, params[i]);
+            }
+
+            ps.executeUpdate();
+
+            // Récupérer l'ID généré
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getLong(1);
+            }
+            return -1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 
