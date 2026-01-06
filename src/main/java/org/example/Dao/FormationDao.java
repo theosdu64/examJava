@@ -6,7 +6,6 @@ import org.example.Dao.Helper.DaoHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import org.example.Class.type_f;
 
 public class FormationDao extends DaoHelper implements InterfaceDao<Formation> {
     @Override
@@ -26,6 +25,11 @@ public class FormationDao extends DaoHelper implements InterfaceDao<Formation> {
         return DaoHelper.executeQuery(sql, this::mapRow);
     }
 
+    public List<Formation> findbyType(String type) {
+        String sql = "SELECT * FROM formation  WHERE type_formation=?";
+        return DaoHelper.executeQuery(sql, this::mapRow,type);
+    }
+
     @Override
     public void update(Formation entity) {
         throw new UnsupportedOperationException("non implémenté");
@@ -42,7 +46,7 @@ public class FormationDao extends DaoHelper implements InterfaceDao<Formation> {
                 rs.getString("nom"),
                 rs.getString("description"),
                 rs.getInt("duree_jours"),
-                type_f.valueOf(rs.getString("type_formation")),
+                rs.getString("type_formation"),
                 rs.getDouble("prix")
         );
     }

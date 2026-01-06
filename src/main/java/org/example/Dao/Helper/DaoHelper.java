@@ -1,12 +1,13 @@
 package org.example.Dao.Helper;
 
+import org.example.Class.Formation;
 import org.example.ConnexionBDD;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoHelper {
+public abstract class DaoHelper {
 
     public static <T> List<T> executeQuery(String sql, RowMapper<T> mapper, Object... params) {
         List<T> results = new ArrayList<>();
@@ -47,5 +48,6 @@ public class DaoHelper {
             return 0;
         }
     }
+
 }
 
