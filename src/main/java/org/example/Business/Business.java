@@ -13,6 +13,15 @@ import java.util.List;
 public class Business {
     static FormationDao formationDao = new FormationDao();
     static UtilisateurDao utilisateurDao = new UtilisateurDao();
+    private static Utilisateur userConnecte = null;
+
+    public static boolean estConnecte() {
+        return userConnecte != null;
+    }
+
+    public static Utilisateur getUserConnecte() {
+        return userConnecte;
+    }
 
     public static void test_connection() {
         try {
@@ -87,7 +96,7 @@ public class Business {
 
             if (user != null) {
                 System.out.println("connexion reussi : " + user.getEmail());
-                return user;
+                userConnecte = user;
             } else {
                 System.out.println("email ou mdp incorrect");
             }

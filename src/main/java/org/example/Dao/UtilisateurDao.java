@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UtilisateurDao extends DaoHelper implements InterfaceDao<Utilisateur> {
-
     public Utilisateur login(String email, String password) {
         String sql = "SELECT * FROM utilisateur WHERE email = ?";
         Utilisateur user  = DaoHelper.executeQuerySingle(sql,this::mapRow, email);

@@ -23,6 +23,8 @@ public class Main {
 //        Business.getFormationByType("présentiel");
           logger.info("----------------------------------------");
           System.out.println(Business.login("test@gmail.com", "etoile64"));
+          logger.info("----------------------------------------");
+          System.out.println(Business.estConnecte());
 //        Business.saveUtilisateur(mathieu);
 //        Business.searchByKeyWord("java");
     }
