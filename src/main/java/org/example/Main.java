@@ -22,7 +22,8 @@ public class Main {
 //        logger.info("----------------------------------------");
 //        Business.getFormationByType("présentiel");
           logger.info("----------------------------------------");
-//          Business.saveUtilisateur(mathieu);
+          System.out.println(Business.login("test@gmail.com", "etoile64"));
+//        Business.saveUtilisateur(mathieu);
 //        Business.searchByKeyWord("java");
     }
 }

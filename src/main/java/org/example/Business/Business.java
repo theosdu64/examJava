@@ -84,9 +84,15 @@ public class Business {
     public static Utilisateur login(String email, String password) {
         try {
             Utilisateur user = utilisateurDao.login(email, password);
-            return user;
+
+            if (user != null) {
+                System.out.println("connexion reussi : " + user.getEmail());
+                return user;
+            } else {
+                System.out.println("email ou mdp incorrect");
+            }
         } catch (Exception e) {
-            System.err.println("Erreur lors du login");
+            System.err.println("erreur login : " + e.getMessage());
             e.printStackTrace();
         }
         return null;
