@@ -10,20 +10,18 @@ import java.util.List;
 
 public class UtilisateurDao extends DaoHelper implements InterfaceDao<Utilisateur> {
 
-//    public void login(Utilisateur entity) {
-//        String email = entity.getEmail();
-//        String sql = "SELECT * FROM utilisateur WHERE email = ?";
-//        Boolean validEmail = DaoHelper.executeQuerySingle(sql,this::mapRow, email);
-//        if(valildEmail) {
-//            String password = entity.getPassword();
-//            String sql = "Select password from utilisateur WHERE email = ?";
-//            Boolean validPassword = DaoHelper.executeQuerySingle(sql, this::mapRow, password);
-//            if(validPassword) {
-//                // je renvois un faux token c normal je sais pas trop comment gerer pour le moment
-//                return "123456789"
-//            }
-//        }
-//    }
+    public Utilisateur login(String email, String password) {
+        String sql = "SELECT * FROM utilisateur WHERE email = ?";
+        Utilisateur user  = DaoHelper.executeQuerySingle(sql,this::mapRow, email);
+        if(user == null) {
+          return null;
+        }
+        if(user.getPassword().equals(password)) {
+            return user;
+        }
+
+        return null;
+    }
 
     @Override
     public void save(Utilisateur entity) {
