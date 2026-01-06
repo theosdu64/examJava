@@ -1,8 +1,10 @@
 package org.example.Business;
 
+import org.example.Class.Client;
 import org.example.Class.Formation;
 import org.example.Class.Utilisateur;
 import org.example.ConnexionBDD;
+import org.example.Dao.ClientDao;
 import org.example.Dao.FormationDao;
 import org.example.Dao.UtilisateurDao;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class Business {
     static FormationDao formationDao = new FormationDao();
     static UtilisateurDao utilisateurDao = new UtilisateurDao();
+    static ClientDao clientDao = new ClientDao();
     private static Utilisateur userConnecte = null;
 
     public static boolean estConnecte() {
@@ -105,6 +108,16 @@ public class Business {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void getClient(long id) {
+        try {
+            Client client = clientDao.findById(id);
+            System.out.println(client);
+        } catch (Exception e) {
+            System.err.println("erreur getClient : " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
 
