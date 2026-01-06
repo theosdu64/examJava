@@ -3,7 +3,6 @@ package org.example.Business;
 import org.example.Class.Formation;
 import org.example.ConnexionBDD;
 import org.example.Dao.FormationDao;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -40,6 +39,18 @@ public class Business {
             System.out.println(formation);
         } catch (Exception e) {
             System.err.println("Erreur lors de la recuperation d'une formation");
+            e.printStackTrace();
+        }
+    }
+
+    public static void getFormationByType(String type) {
+        try {
+            List<Formation> formations= formationDao.findbyType(type);
+            for (Formation f : formations) {
+                System.out.println(f);
+            }
+        } catch (Exception e) {
+            System.err.println("Erreur lors de la recuperation des formation du type : " + type);
             e.printStackTrace();
         }
     }
