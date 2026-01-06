@@ -6,10 +6,10 @@ public class Formation {
     private String nom;
     private String description;
     private Integer duree_jour;
-    private type_f type_formation;
+    private String type_formation;
     private double prix;
 
-    public Formation(Long id_formation, String nom, String description, Integer duree_jour, type_f type_formation, double prix) {
+    public Formation(Long id_formation, String nom, String description, Integer duree_jour, String type_formation, double prix) {
         this.id_formation = id_formation;
         this.nom = nom;
         this.description = description;
@@ -50,11 +50,11 @@ public class Formation {
         this.duree_jour = duree_jour;
     }
 
-    public type_f getType_formation() {
+    public String getType_formation() {
         return type_formation;
     }
 
-    public void setType_formation(type_f type_formation) {
+    public void setType_formation(String type_formation) {
         this.type_formation = type_formation;
     }
 
