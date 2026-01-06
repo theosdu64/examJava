@@ -12,6 +12,11 @@ public class Utilisateur {
         this.password = password;
     }
 
+    public Utilisateur(Long idUtilisateur, String email) {
+        this.idUtilisateur = idUtilisateur;
+        this.email = email;
+    }
+
     public Utilisateur(String email, String password) {
         this.email = email;
         this.password = password;
