@@ -2,6 +2,7 @@ package org.example.Dao;
 
 import org.example.Class.Formation;
 import org.example.Dao.Helper.DaoHelper;
+import org.example.Dao.Interface.InterfaceDao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +24,12 @@ public class FormationDao extends DaoHelper implements InterfaceDao<Formation> {
     public List<Formation> findAll() {
         String sql = "SELECT * FROM formation";
         return DaoHelper.executeQuery(sql, this::mapRow);
+    }
+
+    public List<Formation> searchByKeyWord(String keyword) {
+        String sql = " SELECT * FROM formation WHERE LOWER(nom) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?);";
+        String pattern = "%" + keyword + "%";
+        return DaoHelper.executeQuery(sql, this::mapRow,pattern,pattern);
     }
 
     public List<Formation> findbyType(String type) {
