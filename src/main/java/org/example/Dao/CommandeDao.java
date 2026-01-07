@@ -6,6 +6,7 @@ import org.example.Class.Utilisateur;
 import org.example.Dao.Helper.DaoHelper;
 import org.example.Dao.Interface.InterfaceDao;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +16,17 @@ public class CommandeDao extends DaoHelper implements InterfaceDao<Commande> {
 
     @Override
     public void save(Commande entity) {
-        throw new UnsupportedOperationException("non implémenté");
+        String sql = "INSERT INTO commande (date_commande, statut, montant_total, id_utilisateur, id_client) " +
+                "VALUES (?, ?, ?, ?, ?)";
+
+        DaoHelper.executeUpdate(
+                sql,
+                Date.valueOf(entity.getDateCommande()),
+                entity.getStatus(),
+                entity.getMontantTotal(),
+                entity.getUtilisateur().getIdUtilisateur(),
+                entity.getClient().getIdClient()
+        );
     }
 
     @Override
