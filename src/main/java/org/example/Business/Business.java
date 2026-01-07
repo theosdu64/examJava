@@ -12,6 +12,7 @@ import org.example.Dao.UtilisateurDao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Business {
@@ -141,6 +142,24 @@ public class Business {
             System.out.println(commande);
         }  catch (Exception e) {
             System.err.println("erreur findCommandeById : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void createCommande(Long idClient, Integer montantTotal) {
+        try {
+            Client client = clientDao.findById(idClient);
+            Commande commande = new Commande(
+                    LocalDate.now(),
+                    "EN_ATTENTE",
+                    montantTotal,
+                    userConnecte,
+                    client
+            );
+            commandeDao.save(commande);
+            System.out.println("commande cree");
+        } catch (Exception e) {
+            System.err.println("erreur lors de la commande");
             e.printStackTrace();
         }
     }
