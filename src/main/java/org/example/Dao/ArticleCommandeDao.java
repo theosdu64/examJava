@@ -21,9 +21,20 @@ public class ArticleCommandeDao extends DaoHelper implements InterfaceDao<Articl
         return DaoHelper.executeQuery(sql, this::mapRow, id);
     }
 
-    @Override
     public void save(ArticleCommande entity) {
-        throw new UnsupportedOperationException("non implémenté");
+        String sql = "INSERT INTO article_commande (quantite, prix_unitaire, id_commande, id_formation) " +
+                "VALUES (?, ?, ?, ?)";
+
+        long newId = DaoHelper.executeInsert(
+                sql,
+                entity.getQuantite(),
+                entity.getPrixUnitaire(),
+                entity.getCommande().getIdCommande(),
+                entity.getFormation().getIdFormation()
+        );
+
+        entity.setIdArticleCommande(newId);
+        System.out.println("save article commande : " + newId);
     }
 
     @Override

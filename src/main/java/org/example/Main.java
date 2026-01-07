@@ -30,7 +30,6 @@ public class Main {
 //            Business.getClient(1);
 //        logger.info("----------------------------------------");
 //        Business.createCommande(1L, 1500);
-        Business.displayFullCommande(2L);
-
+//        Business.displayFullCommande(2L);
     }
 }
