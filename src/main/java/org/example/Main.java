@@ -21,15 +21,15 @@ public class Main {
 //        Business.getFormationById(1);
 //        logger.info("----------------------------------------");
 //        Business.getFormationByType("présentiel");
-          logger.info("----------------------------------------");
-          System.out.println(Business.login("test@gmail.com", "etoile64"));
-          logger.info("----------------------------------------");
-          System.out.println(Business.estConnecte());
+//          logger.info("----------------------------------------");
+//          System.out.println(Business.login("test@gmail.com", "etoile64"));
+//          logger.info("----------------------------------------");
+//          System.out.println(Business.estConnecte());
 //        Business.saveUtilisateur(mathieu);
 //        Business.searchByKeyWord("java");
 //            Business.getClient(1);
-
-        logger.info("----------------------------------------");
-        Business.createCommande(1L, 1500);
+//        logger.info("----------------------------------------");
+//        Business.createCommande(1L, 1500);
+        Business.findArticleCommandeById(1L);
     }
 }
