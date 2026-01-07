@@ -22,7 +22,7 @@ public class Utilisateur {
         this.password = password;
     }
 
-    public Long getidUtilisateur() {
+    public Long getIdUtilisateur() {
         return idUtilisateur;
     }
 

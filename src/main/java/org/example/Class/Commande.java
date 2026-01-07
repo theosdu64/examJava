@@ -19,6 +19,14 @@ public class Commande {
         this.client = client;
     }
 
+    public Commande(LocalDate dateCommande, String status, Integer montantTotal, Utilisateur utilisateur, Client client) {
+        this.dateCommande = dateCommande;
+        this.status = status;
+        this.montantTotal = montantTotal;
+        this.utilisateur = utilisateur;
+        this.client = client;
+    }
+
     public long getIdCommande() {
         return idCommande;
     }

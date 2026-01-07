@@ -58,7 +58,7 @@ public class Client {
         this.nom = nom;
     }
 
-    public long getidClient() {
+    public long getIdClient() {
         return idClient;
     }
 
