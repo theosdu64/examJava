@@ -9,45 +9,21 @@ public class Client {
     private String adresse;
     private String telephone;
 
-    public Client(long idClient, String telephone, String adresse, String email, String prenom, String nom) {
+    public Client(long idClient, String nom, String prenom, String email, String adresse, String telephone) {
         this.idClient = idClient;
-        this.telephone = telephone;
-        this.adresse = adresse;
-        this.email = email;
-        this.prenom = prenom;
         this.nom = nom;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
+        this.prenom = prenom;
+        this.email = email;
+        this.adresse = adresse;
         this.telephone = telephone;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public long getIdClient() {
+        return idClient;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setIdClient(long idClient) {
+        this.idClient = idClient;
     }
 
     public String getNom() {
@@ -58,12 +34,36 @@ public class Client {
         this.nom = nom;
     }
 
-    public long getIdClient() {
-        return idClient;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setidClient(long idClient) {
-        this.idClient = idClient;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     @Override

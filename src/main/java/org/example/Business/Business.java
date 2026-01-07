@@ -7,6 +7,7 @@ import org.example.Dao.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Business {
@@ -159,16 +160,44 @@ public class Business {
         }
     }
 
-    public static void findArticleCommandeById(long id) {
+    public static List<ArticleCommande> findArticleCommandeById(long id) {
         try {
-            List<ArticleCommande> articlesCommande = articleCommandeDao.findByCommandId(id);
-            for (ArticleCommande c : articlesCommande) {
-                System.out.println(c);
-            }
+            return articleCommandeDao.findByCommandId(id);
         } catch (Exception e) {
-            System.err.println("erreur articleCommandeById : " + e.getMessage());
+            System.err.println("Erreur articleCommandeById : " + e.getMessage());
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static void displayFullCommande(long idCommande) {
+        try {
+            Commande commande = commandeDao.findById(idCommande);
+            List<ArticleCommande> articles = findArticleCommandeById(idCommande);  // 👈 List<ArticleCommande>
+
+            System.out.println("COMMANDE N° " + commande.getIdCommande());
+            System.out.println("Date : " + commande.getDateCommande());
+            System.out.println("Status : " + commande.getStatus());
+            System.out.println("Client : " + commande.getClient().getNom());
+            System.out.println("User : " + commande.getUtilisateur().getEmail());
+            System.out.println("Articles :");
+            System.out.println();
+
+            for (ArticleCommande article : articles) {
+                System.out.println("  - " + article.getFormation().getNom() + "\n - Quantite :" +
+                         article.getQuantite() +
+                         "\n - Prix :" +
+                         article.calculerSousTotal() + "€");
+            }
+            System.out.println();
+            System.out.println("Montant total : " + commande.getMontantTotal() + "€");
+
+        } catch (Exception e) {
+            System.err.println("Erreur displayFullCommande : " + e.getMessage());
             e.printStackTrace();
         }
     }
 }
+
+
 
