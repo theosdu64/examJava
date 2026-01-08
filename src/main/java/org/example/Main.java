@@ -106,6 +106,16 @@ public class Main {
                     );
                     Business.saveUtilisateur(user);
                     break;
+                case 9:
+                    System.out.println("logout");
+                    Business.logout();
+                    break;
+                case 0:
+                    System.out.println("Quitter");
+                    shop = false;
+                    break;
+                default:
+                    System.out.println("Choix invalide");
             }
         }
     }
