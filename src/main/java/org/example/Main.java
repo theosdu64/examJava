@@ -51,6 +51,32 @@ public class Main {
                         System.out.println("Erreur : " + e.getMessage());
                     }
                     break;
+                case 4:
+                    menuPanier(scanner);
+                    break;
             }
         }
     }
+    public static void menuPanier(Scanner scanner) {
+        boolean retour = false;
+
+        while (!retour) {
+            System.out.println("\nPanier");
+            System.out.println("1. Voir mon panier");
+            System.out.println("2. Ajouter une formation");
+            System.out.println("3. Retirer une formation");
+            System.out.println("4. Vider le panier");
+            System.out.println("5. Retour");
+            System.out.print("Votre choix : ");
+
+            int choix = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choix) {
+                case 1:
+                    Business.afficherPanier();
+                    break;
+            }
+        }
+    }
+}
