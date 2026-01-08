@@ -260,6 +260,18 @@ public class Business {
         panier.clear();
         System.out.println("Panier vide");
     }
+
+    public static double calculerTotal() {
+        double total = 0;
+        for (Map.Entry<Formation, Integer> entry : panier.entrySet()) {
+            total += entry.getKey().getPrix() * entry.getValue();
+        }
+        return total;
+    }
+
+    public static boolean panierEstVide() {
+        return panier.isEmpty();
+    }
 }
 
 
