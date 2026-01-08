@@ -52,6 +52,23 @@ public class CommandeDao extends DaoHelper implements InterfaceDao<Commande> {
         return DaoHelper.executeQuery(sql, this::mapRow);
     }
 
+    public Commande saving(Commande entity) {
+        String sql = "INSERT INTO commande (date_commande, statut, montant_total, id_utilisateur, id_client) " +
+                "VALUES (?, ?, ?, ?, ?)";
+
+        long newId = DaoHelper.executeInsert(
+                sql,
+                Date.valueOf(entity.getDateCommande()),
+                entity.getStatus(),
+                entity.getMontantTotal(),
+                entity.getUtilisateur().getIdUtilisateur(),
+                entity.getClient().getIdClient()
+        );
+
+        entity.setIdCommande(newId);
+        return entity;
+    }
+
     @Override
     public void update(Commande entity) {
         throw new UnsupportedOperationException("non implémenté");
