@@ -54,6 +54,14 @@ public class Main {
                 case 4:
                     menuPanier(scanner);
                     break;
+                case 5:
+                    if (!Business.estConnecte()) {
+                        System.out.println("Vous devez vous connecter avant");
+                        break;
+                    }
+                    System.out.println("Vos commandes :");
+                    Business.displayAllFullCommande();
+                    break;
             }
         }
     }

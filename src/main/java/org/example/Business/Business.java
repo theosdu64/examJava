@@ -272,6 +272,42 @@ public class Business {
     public static boolean panierEstVide() {
         return panier.isEmpty();
     }
+
+    public static void displayAllFullCommande() {
+        try {
+            List<Commande> commandes = commandeDao.findAll();
+
+            if (commandes.isEmpty()) {
+                System.out.println("Aucune commande trouvée");
+                return;
+            }
+
+            for (Commande commande : commandes) {
+                System.out.println("\n=================================");
+                System.out.println("COMMANDE N° " + commande.getIdCommande());
+                System.out.println("Date : " + commande.getDateCommande());
+                System.out.println("Statut : " + commande.getStatus());
+                System.out.println("Client : " + commande.getClient().getNom());
+                System.out.println("Utilisateur : " + commande.getUtilisateur().getEmail());
+                System.out.println("\nArticles :");
+
+                List<ArticleCommande> articles = articleCommandeDao.findByCommandId(commande.getIdCommande());
+
+                for (ArticleCommande article : articles) {
+                    System.out.println("  - " + article.getFormation().getNom());
+                    System.out.println("    Quantité : " + article.getQuantite());
+                    System.out.println("    Prix unitaire : " + article.getPrixUnitaire() + "€");
+                    System.out.println("    Sous-total : " + article.calculerSousTotal() + "€");
+                }
+                System.out.println("---------------------------");
+                System.out.println("Montant total : " + commande.getMontantTotal() + "€");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Erreur displayAllFullCommande : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
 
 
