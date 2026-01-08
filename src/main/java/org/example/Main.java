@@ -76,6 +76,21 @@ public class Main {
                 case 1:
                     Business.afficherPanier();
                     break;
+                case 2:
+                    Business.getAllFormation();
+                    System.out.println("-----------------");
+                    long idFormation = scanner.nextLong();
+                    int  quantite = scanner.nextInt();
+                    scanner.nextLine();
+                    Business.ajouterAuPanier(idFormation, quantite);
+                    break;
+                case 3:
+                    Business.afficherPanier();
+                    System.out.print("saisir id de la formation a retire du panier : ");
+                    long idRetirer = scanner.nextLong();
+                    scanner.nextLine();
+                    Business.retirerDuPanier(idRetirer);
+                    break;
             }
         }
     }

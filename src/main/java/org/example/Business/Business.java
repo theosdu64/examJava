@@ -131,7 +131,7 @@ public class Business {
         try {
             Commande commande = commandeDao.findById(id);
             System.out.println(commande);
-        }  catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("erreur findCommandeById : " + e.getMessage());
             e.printStackTrace();
         }
@@ -191,9 +191,9 @@ public class Business {
 
             for (ArticleCommande article : articles) {
                 System.out.println("  - " + article.getFormation().getNom() + "\n - Quantite :" +
-                         article.getQuantite() +
-                         "\n - Prix :" +
-                         article.calculerSousTotal() + "€");
+                        article.getQuantite() +
+                        "\n - Prix :" +
+                        article.calculerSousTotal() + "€");
             }
             System.out.println();
             System.out.println("Montant total : " + commande.getMontantTotal() + "€");
@@ -203,6 +203,7 @@ public class Business {
             e.printStackTrace();
         }
     }
+
     public static void afficherPanier() {
         if (panier.isEmpty()) {
             System.out.println("Panier vide");
@@ -225,6 +226,34 @@ public class Business {
 
         System.out.println("---------------");
         System.out.println("Total : " + total + "€");
+    }
+
+    public static void ajouterAuPanier(long idFormation, int quantite) {
+        Formation formation = formationDao.findById(idFormation);
+
+        if (formation == null) {
+            System.out.println("Erreur formation introuvable");
+            return;
+        }
+        if (panier.containsKey(formation)) {
+            int current = panier.get(formation);
+            panier.put(formation, current + quantite);
+            System.out.println("panier mis a jour: " + (current + quantite));
+        } else {
+            panier.put(formation, quantite);
+            System.out.println("formation ajouté");
+        }
+    }
+
+    public static void retirerDuPanier(long idFormation) {
+        Formation formationATrouver = null;
+
+        for (Formation f : panier.keySet()) {
+            if (f.getIdFormation().equals(idFormation)) {
+                formationATrouver = f;
+                break;
+            }
+        }
     }
 }
 
