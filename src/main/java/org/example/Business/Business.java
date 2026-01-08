@@ -5,7 +5,9 @@ import org.example.Dao.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Business {
     static FormationDao formationDao = new FormationDao();
@@ -14,6 +16,7 @@ public class Business {
     static CommandeDao commandeDao = new CommandeDao();
     static ArticleCommandeDao articleCommandeDao = new ArticleCommandeDao();
     private static Utilisateur userConnecte = null;
+    private static Map<Formation, Integer> panier = new HashMap<>();
 
     public static boolean estConnecte() {
         return userConnecte != null;
@@ -199,6 +202,29 @@ public class Business {
             System.err.println("Erreur displayFullCommande : " + e.getMessage());
             e.printStackTrace();
         }
+    }
+    public static void afficherPanier() {
+        if (panier.isEmpty()) {
+            System.out.println("Panier vide");
+            return;
+        }
+
+        System.out.println("Panier");
+        double total = 0;
+
+        for (Map.Entry<Formation, Integer> entry : panier.entrySet()) {
+            Formation f = entry.getKey();
+            int quantite = entry.getValue();
+            double sousTotal = f.getPrix() * quantite;
+
+            System.out.println(f.getNom() +
+                    " x" + quantite +
+                    " = " + sousTotal + "€");
+            total += sousTotal;
+        }
+
+        System.out.println("---------------");
+        System.out.println("Total : " + total + "€");
     }
 }
 
