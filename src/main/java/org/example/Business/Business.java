@@ -1,11 +1,8 @@
 package org.example.Business;
 
 import org.example.Class.*;
-import org.example.ConnexionBDD;
 import org.example.Dao.*;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,18 +19,12 @@ public class Business {
         return userConnecte != null;
     }
 
-    public static Utilisateur getUserConnecte() {
-        return userConnecte;
+    public static void logout() {
+        userConnecte = null;
     }
 
-    public static void test_connection() {
-        try {
-            Connection conn = ConnexionBDD.getConnection();
-            System.out.println("Connecté");
-            conn.close();
-        } catch (SQLException e) {
-            System.err.println("Erreur : " + e.getMessage());
-        }
+    public static Utilisateur getUserConnecte() {
+        return userConnecte;
     }
 
     public static void getAllFormation() {
@@ -120,6 +111,7 @@ public class Business {
         }
     }
 
+
     public static void findAllCommande() {
         try {
             List<Commande> commandes = commandeDao.findAll();
@@ -142,9 +134,15 @@ public class Business {
         }
     }
 
-    public static void createCommande(Long idClient, Integer montantTotal) {
+    public static Commande createCommande(long idClient, Integer montantTotal) {
         try {
             Client client = clientDao.findById(idClient);
+
+            if (client == null) {
+                System.out.println("Client introuvable");
+                return null;
+            }
+
             Commande commande = new Commande(
                     LocalDate.now(),
                     "EN_ATTENTE",
@@ -152,11 +150,16 @@ public class Business {
                     userConnecte,
                     client
             );
-            commandeDao.save(commande);
+
+            commandeDao.saving(commande);
+
             System.out.println("commande cree");
+            return commande;
+
         } catch (Exception e) {
-            System.err.println("erreur lors de la commande");
+            System.err.println("erreur lors de la crreation de la commande : " + e.getMessage());
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -173,7 +176,7 @@ public class Business {
     public static void displayFullCommande(long idCommande) {
         try {
             Commande commande = commandeDao.findById(idCommande);
-            List<ArticleCommande> articles = findArticleCommandeById(idCommande);  // 👈 List<ArticleCommande>
+            List<ArticleCommande> articles = findArticleCommandeById(idCommande);
 
             System.out.println("COMMANDE N° " + commande.getIdCommande());
             System.out.println("Date : " + commande.getDateCommande());
