@@ -85,6 +85,15 @@ public class Main {
                         scanner.nextLine();
                     }
                     break;
+                case 7:
+                    System.out.println("test01@gmail.com");
+                    System.out.println("etoile64");
+                    System.out.println("Entrez le email : ");
+                    String email = scanner.nextLine();
+                    System.out.println("Entrez le password : ");
+                    String mdp = scanner.nextLine();
+                    Business.login(email, mdp);
+                    break;
             }
         }
     }
