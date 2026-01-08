@@ -30,6 +30,11 @@ public class Main {
                 case 1:
                     Business.getAllFormation();
                     break;
+                case 2 :
+                    System.out.print("Mot-clé : ");
+                    String keyword = scanner.nextLine();
+                    Business.searchByKeyWord(keyword);
+                    break;
         }
     }
 }
