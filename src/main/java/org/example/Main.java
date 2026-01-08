@@ -30,11 +30,27 @@ public class Main {
                 case 1:
                     Business.getAllFormation();
                     break;
-                case 2 :
+                case 2:
                     System.out.print("Mot-clé : ");
                     String keyword = scanner.nextLine();
                     Business.searchByKeyWord(keyword);
                     break;
+                case 3:
+                    try {
+                        System.out.print("Type (presentiel/distanciel) (1 ou 2) : ");
+                        String type = scanner.nextLine();
+
+                        if (type.equals("1")) {
+                            Business.getFormationByType("présentiel");
+                        } else if (type.equals("2")) {
+                            Business.getFormationByType("distanciel");
+                        } else {
+                            throw new IllegalArgumentException("Choix invalide");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Erreur : " + e.getMessage());
+                    }
+                    break;
+            }
         }
     }
-}
