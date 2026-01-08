@@ -320,6 +320,52 @@ public class Business {
             System.err.println("erreur getAllClient : " + e.getMessage());
         }
     }
+
+
+    public static void passerCommande(long idClient) {
+        try {
+            if (!estConnecte()) {
+                System.out.println("Vous devez etre connecte");
+                return;
+            }
+
+            if (panierEstVide()) {
+                System.out.println("le panier est vide");
+                return;
+            }
+
+            double montantTotal = calculerTotal();
+
+            Commande commande = createCommande(idClient, (int)montantTotal);
+
+            if (commande == null) {
+                System.out.println("Erreur creation de la commande");
+                return;
+            }
+
+            for (Map.Entry<Formation, Integer> entry : panier.entrySet()) {
+                Formation formation = entry.getKey();
+                int quantite = entry.getValue();
+
+                ArticleCommande article = new ArticleCommande(
+                        quantite,
+                        formation.getPrix(),
+                        commande,
+                        formation
+                );
+
+                articleCommandeDao.save(article);
+            }
+            viderPanier();
+
+            System.out.println("commande reussi!");
+            System.out.println("   Montant total : " + montantTotal + "€");
+
+        } catch (Exception e) {
+            System.err.println("erreur lors de la commande");
+            e.printStackTrace();
+        }
+    }
 }
 
 

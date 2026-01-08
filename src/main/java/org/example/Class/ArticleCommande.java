@@ -22,6 +22,13 @@ public class ArticleCommande {
         this.formation = formation;
     }
 
+    public ArticleCommande(int quantite, double prix, Commande commande, Formation formation) {
+        this.quantite = quantite;
+        this.prixUnitaire = prix;
+        this.commande = commande;
+        this.formation = formation;
+    }
+
     public double calculerSousTotal() {
         return  quantite * prixUnitaire;
     }
