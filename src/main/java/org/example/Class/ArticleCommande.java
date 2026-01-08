@@ -16,7 +16,7 @@ public class ArticleCommande {
         this.formation = formation;
     }
 
-    public ArticleCommande(int quantite, double prixUnitaire, Formation formation) {
+    public ArticleCommande(Integer quantite, double prixUnitaire, Formation formation) {
         this.quantite = quantite;
         this.prixUnitaire = prixUnitaire;
         this.formation = formation;
@@ -42,7 +42,7 @@ public class ArticleCommande {
         this.idArticleCommande = idArticleCommande;
     }
 
-    public Integer getQuantite() {
+    public double getQuantite() {
         return quantite;
     }
 

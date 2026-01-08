@@ -18,7 +18,7 @@ public class ClientDao extends DaoHelper implements InterfaceDao<Client> {
     @Override
     public Client findById(Long id) {
         String sql = "SELECT * FROM client WHERE id_client=?";
-        return DaoHelper.executeQuerySingle(sql, this::mapRow,id);    }
+        return DaoHelper.executeQuerySingle(sql, this::mapRow,id);}
 
     @Override
     public List<Client> findAll() {
