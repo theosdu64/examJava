@@ -91,6 +91,14 @@ public class Main {
                     scanner.nextLine();
                     Business.retirerDuPanier(idRetirer);
                     break;
+                case 4:
+                    Business.viderPanier();
+                    break;
+                case 5:
+                    retour = true;
+                    break;
+                default:
+                    System.out.println("Choix invalide");
             }
         }
     }

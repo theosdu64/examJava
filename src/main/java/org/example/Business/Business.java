@@ -255,6 +255,11 @@ public class Business {
             }
         }
     }
+
+    public static void viderPanier() {
+        panier.clear();
+        System.out.println("Panier vide");
+    }
 }
 
 
