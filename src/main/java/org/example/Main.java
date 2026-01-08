@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Business.Business;
+
 import java.util.Scanner;
 
 public class Main {
@@ -24,6 +26,10 @@ public class Main {
 
             int choix = scanner.nextInt();
             scanner.nextLine();
+            switch (choix) {
+                case 1:
+                    Business.getAllFormation();
+                    break;
         }
     }
 }
