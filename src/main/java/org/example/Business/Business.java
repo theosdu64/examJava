@@ -308,6 +308,18 @@ public class Business {
             e.printStackTrace();
         }
     }
+
+    public  static void getAllClient() {
+        try {
+            List<Client> clients = clientDao.findAll();
+            for (Client c : clients) {
+                System.out.println(c);
+            }
+        }
+        catch (Exception e) {
+            System.err.println("erreur getAllClient : " + e.getMessage());
+        }
+    }
 }
 
 

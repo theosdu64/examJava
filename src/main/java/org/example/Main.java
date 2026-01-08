@@ -62,6 +62,29 @@ public class Main {
                     System.out.println("Vos commandes :");
                     Business.displayAllFullCommande();
                     break;
+                case 6:
+                    if (!Business.estConnecte()) {
+                        System.out.println("Vous devez etre connecter");
+                        break;
+                    }
+
+                    Business.afficherPanier();
+                    System.out.println("--------------------");
+
+                    Business.getAllClient();
+                    System.out.print("ID du client : ");
+
+                    try {
+                        long idClient = scanner.nextLong();
+                        scanner.nextLine();
+
+                        Business.passerCommande(idClient);
+
+                    } catch (Exception e) {
+                        System.out.println("id client invalide");
+                        scanner.nextLine();
+                    }
+                    break;
             }
         }
     }
