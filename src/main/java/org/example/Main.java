@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.Business.Business;
+import org.example.Class.Utilisateur;
 
 import java.util.Scanner;
 
@@ -93,6 +94,17 @@ public class Main {
                     System.out.println("Entrez le password : ");
                     String mdp = scanner.nextLine();
                     Business.login(email, mdp);
+                    break;
+                case 8:
+                    System.out.println("Entrez le email : ");
+                    String emailRegister = scanner.nextLine();
+                    System.out.println("Entrez le password : ");
+                    String mdpRegister = scanner.nextLine();
+                    Utilisateur user = new Utilisateur(
+                            emailRegister,
+                            mdpRegister
+                    );
+                    Business.saveUtilisateur(user);
                     break;
             }
         }
